@@ -22,8 +22,6 @@ export const GuessWord = (props) => {
           <thead>
             <tr>
               <th>Guess</th>
-            </tr>
-            <tr>
               <th>Matching letters</th>
             </tr>
           </thead>
