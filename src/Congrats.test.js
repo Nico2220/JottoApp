@@ -1,10 +1,6 @@
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import checkPropTypes from "check-prop-types";
+import { shallow } from "enzyme";
 import { Congrats } from "./Congrats";
 import { findByTestAttr, checkProps } from "../tests/testsUtils";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 const setup = (props = {}) => shallow(<Congrats {...props} />);
 
