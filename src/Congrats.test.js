@@ -1,7 +1,8 @@
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import checkPropTypes from "check-prop-types";
 import { Congrats } from "./Congrats";
-import { findByTestAttr } from "../tests/testsUtils";
+import { findByTestAttr, checkProps } from "../tests/testsUtils";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -23,4 +24,9 @@ test("render no-empty congrats when props is true", () => {
   const wrapper = setup({ success: true });
   const componentMessage = findByTestAttr(wrapper, "component-message");
   expect(componentMessage.length).not.toBe(0);
+});
+
+test("does not throw wrror with expect props", () => {
+  const expectProps = { success: false };
+  checkProps(Congrats, expectProps);
 });

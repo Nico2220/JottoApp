@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const Congrats = (props) => {
   return props.success ? (
@@ -8,4 +9,8 @@ export const Congrats = (props) => {
   ) : (
     <div data-test="component-congrat"></div>
   );
+};
+
+Congrats.propTypes = {
+  success: PropTypes.bool,
 };
