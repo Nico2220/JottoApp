@@ -8,10 +8,12 @@ function App() {
       <h1>Jotto</h1>
       <Congrats success={false} />
       <GuessWord
-        guessedWord={[
-          { guessedWord: "train", letterMatchCount: 3 },
-          { guessedWord: "agile", letterMatchCount: 3 },
-        ]}
+        guessedWord={
+          [
+            // { guessedWord: "train", letterMatchCount: 3 },
+            // { guessedWord: "agile", letterMatchCount: 3 },
+          ]
+        }
       />
     </div>
   );

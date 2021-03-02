@@ -10,7 +10,7 @@ test("Render  without Error", () => {
   expect(component.length).toBe(1);
 });
 
-test("Render no test when props is false", () => {
+test("Render no text when props is false", () => {
   const wrapper = setup({ success: false });
   const component = findByTestAttr(wrapper, "component-congrat");
   expect(component.text()).toBe("");
