@@ -1,3 +1,11 @@
-export const successReducer = (state = { success: true }, action) => {
-  return null;
+import { actionTypes } from "../actions";
+
+export const successReducer = (state = false, action) => {
+  switch (action.type) {
+    case actionTypes.CORRECT_GUESS:
+      return true;
+
+    default:
+      return state;
+  }
 };
