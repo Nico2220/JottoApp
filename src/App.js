@@ -1,22 +1,38 @@
+import React from "react";
+import { connect } from "react-redux";
 import "./App.css";
-import { GuessWord } from "./GuessWord";
-import { Congrats } from "./Congrats";
+import { GuessedWords } from "./GuessedWords";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Jotto</h1>
-      <Congrats success={false} />
-      <GuessWord
-        guessedWord={
-          [
-            // { guessedWord: "train", letterMatchCount: 3 },
-            // { guessedWord: "agile", letterMatchCount: 3 },
-          ]
-        }
-      />
-    </div>
-  );
+import { Congrats } from "./Congrats";
+import { guessWord, getSecretWord } from "./actions";
+import Input from "./Input";
+
+export class UnconnectedApp extends React.Component {
+  componentDidMount() {
+    this.props.getSecretWord();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Jotto</h1>
+        <Congrats success={true} />
+        <Input />
+        <GuessedWords guessedWords={this.props.guessedWords} />
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToprops = (state) => {
+  const { success, guessedWords, secretWord } = state;
+  return {
+    success,
+    guessedWords,
+    secretWord,
+  };
+};
+
+export default connect(mapStateToprops, { guessWord, getSecretWord })(
+  UnconnectedApp
+);

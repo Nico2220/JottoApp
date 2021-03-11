@@ -1,12 +1,12 @@
 import { actionTypes } from "../actions/index";
-import { successReducer } from "./successReducer";
+import successReducer from "./successReducer";
 
 test("Return inital state of 'false' when no action is passed", () => {
   const newState = successReducer(undefined, {});
   expect(newState).toBe(false);
 });
 
-test("return state of 'true' upon receiving a action", () => {
+test("return state of 'true' upon receiving a action of type 'CORRECT_GUESS'", () => {
   const newState = successReducer(undefined, {
     type: actionTypes.CORRECT_GUESS,
   });

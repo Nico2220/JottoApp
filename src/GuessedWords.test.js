@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { findByTestAttr, checkProps } from "../tests/testsUtils";
-import { GuessWord } from "./GuessWord";
+import { GuessedWords } from "./GuessedWords";
 
 const defaultProps = {
-  guessedWord: [
+  guessedWords: [
     {
       guessedWord: "train",
       letterMatchCount: 3,
@@ -14,16 +14,16 @@ const defaultProps = {
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<GuessWord {...setupProps} />);
+  return shallow(<GuessedWords {...setupProps} />);
 };
 
 test("Does not throw warning with expected proptypes", () => {
-  checkProps(GuessWord, defaultProps);
+  checkProps(GuessedWords, defaultProps);
 });
 
 describe("if there are no word guessed", () => {
   let wrapper;
-  beforeEach(() => (wrapper = setup({ guessedWord: [] })));
+  beforeEach(() => (wrapper = setup({ guessedWords: [] })));
 
   test("Renders without Error", () => {
     const component = findByTestAttr(wrapper, "component-guessed-word");
@@ -37,13 +37,13 @@ describe("if there are no word guessed", () => {
 });
 
 describe("if there are word guessed", () => {
-  const guessedWord = [
+  const guessedWords = [
     { guessedWord: "train", letterMatchCount: 3 },
     { guessedWord: "agile", letterMatchCount: 3 },
     { guessedWord: "party", letterMatchCount: 5 },
   ];
   let wrapper;
-  beforeEach(() => (wrapper = setup({ guessedWord })));
+  beforeEach(() => (wrapper = setup({ guessedWords })));
 
   test("Renders without Error", () => {
     const component = findByTestAttr(wrapper, "component-guessed-word");
@@ -57,6 +57,6 @@ describe("if there are word guessed", () => {
 
   test("correct number of guess word", () => {
     const guessedWordNode = findByTestAttr(wrapper, "guessed-word");
-    expect(guessedWordNode.length).toBe(guessedWord.length);
+    expect(guessedWordNode.length).toBe(guessedWords.length);
   });
 });

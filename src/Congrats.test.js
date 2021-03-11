@@ -2,7 +2,12 @@ import { shallow } from "enzyme";
 import { Congrats } from "./Congrats";
 import { findByTestAttr, checkProps } from "../tests/testsUtils";
 
-const setup = (props = {}) => shallow(<Congrats {...props} />);
+const defaultProps = { success: false };
+
+const setup = (props = {}) => {
+  const setupProps = { ...defaultProps, ...props };
+  return shallow(<Congrats {...setupProps} />);
+};
 
 test("Render  without Error", () => {
   const wrapper = setup();

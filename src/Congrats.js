@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 export const Congrats = (props) => {
   return props.success ? (
     <div data-test="component-congrat">
-      <span data-test="component-message">You win</span>
+      <span data-test="component-message">
+        Congradulation! Ypu guessed the word
+      </span>
     </div>
   ) : (
     <div data-test="component-congrat"></div>
